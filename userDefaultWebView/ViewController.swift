@@ -9,11 +9,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var t2: UITextField!
+    @IBOutlet weak var t1: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        t2.text = "\(UserDefaults.standard.integer(forKey: "eliment"))"
     }
 
 
+    @IBAction func buttonAction(_ sender: Any) {
+        UserDefaults.standard.set(self.t1.text!, forKey: "eliment")
+        let n = storyboard?.instantiateViewController(withIdentifier: "ViewController1") as! ViewController1
+        navigationController?.pushViewController(n, animated: true)
+    }
 }
 
